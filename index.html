@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Management System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 0;
+            margin: 0;
+            background-color: #f7f7f7;
+            display: flex;
+        }
+
+        #sidebar {
+            width: 250px;
+            height: 100vh;
+            padding: 10px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            overflow-y: auto;
+        }
+
+        #main-content {
+            flex-grow: 1;
+            padding: 10px;
+            margin-left: 270px;
+            color: #666; /* General text color */
+        }
+
+        h1, h2 {
+            color: #444;
+        }
+
+        #result p {
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+
+        #result p.film-info { /* For movie details */
+            background-color: #f9f9f9;
+            color: #333; /* Darker text color for prominence */
+            font-weight: bold;
+        }
+
+        #result p.update-text { /* For update notifications */
+            background-color: #fff;
+            color: #888; /* Lighter text color to make it subdued */
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="sidebar">
+        <h2>Actions</h2>
+
+        <!-- Add Movie Section -->
+        <div class="form-group">
+            <label>Title:</label>
+            <input type="text" id="movieTitle">
+        </div>
+        <div class="form-group">
+            <label>Rating:</label>
+            <input type="number" id="movieRating" min="1" max="5">
+        </div>
+        <div class="form-group">
+            <label>Watched:</label>
+            <input type="checkbox" id="movieWatched">
+        </div>
+        <button onclick="addMovieFromInput()">Add Movie</button>
+        
+        <!-- Print Movies -->
+        <button onclick="printMovies()">Print All Movies</button>
+        
+        <!-- High Ratings -->
+        <div class="form-group">
+            <label>Rating above:</label>
+            <input type="number" id="ratingInput" min="1" max="5">
+        </div>
+        <button onclick="displayHighRatings()">Display Movies with High Ratings</button>
+        
+        <!-- Change Watched Status -->
+        <div class="form-group">
+            <label>Select Movie to Toggle Watched:</label>
+            <select id="movieSelect"></select>
+        </div>
+        <button onclick="toggleMovieWatched()">Toggle Watched Status</button>
+    </div>
+
+    <div id="main-content">
+        <h1>Movie Management System</h1>
+        <!-- Results -->
+        <div id="result"></div>
+    </div>
+    
+    <script src="script.js"> </script>
+</body>
+
+</html>
